@@ -3,127 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutanix Database Service (NDB) - Event Showcase</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Nutanix Database Service (NDB) | Live Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/feather-icons"></script>
+
 <style>
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
 
 body {
-  background: #0f0a1f;
-  color: white;
-  overflow-x: hidden;
+  background: #f7f6fb;
+  color: #1a1333;
+  line-height: 1.6;
 }
 
 header {
+  background: linear-gradient(135deg, #6b2edb, #8b5cf6);
+  color: white;
   text-align: center;
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #5f2eea, #7b3fe4);
-  animation: fadeIn 1.2s ease-in-out;
+  padding: 70px 20px;
 }
 
 header img {
-  width: 160px;
-  margin-bottom: 20px;
+  width: 170px;
+  margin-bottom: 25px;
 }
 
 h1 {
-  font-size: 2.2rem;
-  margin-bottom: 15px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
 }
 
 .tagline {
-  font-size: 1.1rem;
-  opacity: 0.9;
-  margin-bottom: 25px;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
 }
 
 .btn {
   display: inline-block;
-  margin: 10px;
-  padding: 12px 22px;
+  padding: 14px 26px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s ease;
+  margin: 10px;
 }
 
 .btn-primary {
   background: white;
-  color: #5f2eea;
+  color: #6b2edb;
 }
 
 .btn-primary:hover {
-  background: #e2d9ff;
-  transform: translateY(-3px);
+  background: #ece9ff;
+  transform: translateY(-4px);
 }
 
-.btn-secondary {
+.btn-outline {
   border: 2px solid white;
   color: white;
 }
 
-.btn-secondary:hover {
+.btn-outline:hover {
   background: white;
-  color: #5f2eea;
-  transform: translateY(-3px);
+  color: #6b2edb;
+  transform: translateY(-4px);
 }
 
 section {
-  padding: 60px 20px;
+  padding: 70px 20px;
   text-align: center;
-  animation: fadeUp 1.5s ease-in-out;
 }
 
 .section-title {
-  font-size: 1.8rem;
-  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
 }
 
-.card-container {
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
   max-width: 1100px;
   margin: auto;
 }
 
 .card {
-  background: #1a1333;
-  padding: 25px;
-  border-radius: 15px;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(107, 46, 219, 0.08);
   transition: 0.3s ease;
-  border: 1px solid #2c1f5a;
 }
 
 .card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(123, 63, 228, 0.4);
+  box-shadow: 0 15px 45px rgba(107, 46, 219, 0.15);
+}
+
+.card i {
+  width: 40px;
+  height: 40px;
+  color: #6b2edb;
+  margin-bottom: 20px;
 }
 
 .highlight {
-  background: linear-gradient(135deg, #7b3fe4, #5f2eea);
+  background: linear-gradient(135deg, #ede9ff, #f5f3ff);
+}
+
+.contact-section {
+  background: linear-gradient(135deg, #6b2edb, #8b5cf6);
+  color: white;
+}
+
+.contact-section .card {
+  background: white;
+  color: #1a1333;
 }
 
 footer {
   padding: 30px;
   text-align: center;
-  background: #0b0718;
   font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-@keyframes fadeIn {
-  from { opacity:0; transform: translateY(-20px);}
-  to { opacity:1; transform: translateY(0);}
-}
-
-@keyframes fadeUp {
-  from { opacity:0; transform: translateY(40px);}
-  to { opacity:1; transform: translateY(0);}
+  color: #666;
 }
 
 @media(max-width:600px){
-  h1 { font-size:1.7rem; }
+  h1 { font-size:1.8rem; }
 }
 </style>
 </head>
@@ -132,78 +141,78 @@ footer {
 
 <header>
   <img src="https://www.nutanix.com/content/dam/nutanix/global/logos/nutanix-logo-white.svg" alt="Nutanix Logo">
-  <h1>Explore Nutanix Database Service (NDB)</h1>
-  <p class="tagline">Automate. Clone. Restore. Simplify Database Operations.</p>
-  <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Visit Official NDB Page</a>
-  <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-secondary" target="_blank">Try NDB Test Drive</a>
+  <h1>Live Restore & Clone Demo with Nutanix NDB</h1>
+  <p class="tagline">Automate Database Operations. Clone in Minutes. Restore Instantly.</p>
+  <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Explore NDB</a>
+  <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-outline" target="_blank">Try Test Drive</a>
 </header>
 
 <section class="highlight">
-  <h2 class="section-title">🔥 Live Breakout Sessions</h2>
-  <div class="card-container">
+  <h2 class="section-title">🔥 Live Booth Breakout Sessions</h2>
+  <div class="card-grid">
     <div class="card">
+      <i data-feather="rotate-ccw"></i>
       <h3>Instant Database Restore</h3>
       <p>Experience point-in-time restore using NDB Time Machine.</p>
     </div>
     <div class="card">
-      <h3>Clone & Refresh in Minutes</h3>
-      <p>Provision full database clones instantly for Dev/Test environments.</p>
+      <i data-feather="copy"></i>
+      <h3>Clone & Refresh</h3>
+      <p>Provision full database clones in minutes for Dev/Test.</p>
     </div>
   </div>
 </section>
 
 <section>
   <h2 class="section-title">🚀 Experience NDB</h2>
-  <div class="card-container">
+  <div class="card-grid">
     <div class="card">
-      <h3>Official NDB Page</h3>
-      <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Explore</a>
-    </div>
-    <div class="card">
+      <i data-feather="monitor"></i>
       <h3>Demo Portal</h3>
       <a href="https://demo.nutanix.com/login" class="btn btn-primary" target="_blank">Access Demo</a>
     </div>
     <div class="card">
+      <i data-feather="user-plus"></i>
       <h3>Sign Up</h3>
       <a href="https://my.nutanix.com/page/signup" class="btn btn-primary" target="_blank">Create Account</a>
     </div>
   </div>
 </section>
 
-<section>
+<section class="highlight">
   <h2 class="section-title">📚 Resources</h2>
-  <div class="card-container">
+  <div class="card-grid">
     <div class="card">
+      <i data-feather="award"></i>
       <h3>Customer Success Stories</h3>
       <a href="https://www.nutanix.com/products/database-service#customers" class="btn btn-primary" target="_blank">View Stories</a>
     </div>
     <div class="card">
+      <i data-feather="video"></i>
       <h3>Video Resources</h3>
       <a href="https://www.nutanix.com/products/database-service#resources" class="btn btn-primary" target="_blank">Watch Videos</a>
     </div>
   </div>
 </section>
 
-<section class="highlight">
+<section class="contact-section">
   <h2 class="section-title">📞 Talk to Our NDB Specialist</h2>
-  <div class="card-container">
+  <div class="card-grid">
     <div class="card">
+      <i data-feather="mail"></i>
       <h3>Nidhi – NDB Sales Specialist</h3>
       <a href="mailto:nidhi.bisht@nutanix.com" class="btn btn-primary">Email Now</a>
     </div>
   </div>
 </section>
 
-<!-- Optional Lead Capture Section -->
-<!-- Replace # with your Google Form link later -->
-<section>
-  <h2 class="section-title">🎁 Get Exclusive NDB Architecture Deck</h2>
-  <a href="#" class="btn btn-secondary">Register Here</a>
-</section>
-
 <footer>
   © 2026 Nutanix | Nutanix Database Service (NDB)
 </footer>
+
+<script>
+  feather.replace()
+</script>
 
 </body>
 </html>
