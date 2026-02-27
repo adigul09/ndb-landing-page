@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutanix Database Service (NDB) - Event Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+
+body {
+  background: #0f0a1f;
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #5f2eea, #7b3fe4);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+header img {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-primary {
+  background: white;
+  color: #5f2eea;
+}
+
+.btn-primary:hover {
+  background: #e2d9ff;
+  transform: translateY(-3px);
+}
+
+.btn-secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #5f2eea;
+  transform: translateY(-3px);
+}
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+  animation: fadeUp 1.5s ease-in-out;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background: #1a1333;
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+  border: 1px solid #2c1f5a;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(123, 63, 228, 0.4);
+}
+
+.highlight {
+  background: linear-gradient(135deg, #7b3fe4, #5f2eea);
+}
+
+footer {
+  padding: 30px;
+  text-align: center;
+  background: #0b0718;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; transform: translateY(-20px);}
+  to { opacity:1; transform: translateY(0);}
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(40px);}
+  to { opacity:1; transform: translateY(0);}
+}
+
+@media(max-width:600px){
+  h1 { font-size:1.7rem; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="https://www.nutanix.com/content/dam/nutanix/global/logos/nutanix-logo-white.svg" alt="Nutanix Logo">
+  <h1>Explore Nutanix Database Service (NDB)</h1>
+  <p class="tagline">Automate. Clone. Restore. Simplify Database Operations.</p>
+  <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Visit Official NDB Page</a>
+  <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-secondary" target="_blank">Try NDB Test Drive</a>
+</header>
+
+<section class="highlight">
+  <h2 class="section-title">🔥 Live Breakout Sessions</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Instant Database Restore</h3>
+      <p>Experience point-in-time restore using NDB Time Machine.</p>
+    </div>
+    <div class="card">
+      <h3>Clone & Refresh in Minutes</h3>
+      <p>Provision full database clones instantly for Dev/Test environments.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">🚀 Experience NDB</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Official NDB Page</h3>
+      <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Explore</a>
+    </div>
+    <div class="card">
+      <h3>Demo Portal</h3>
+      <a href="https://demo.nutanix.com/login" class="btn btn-primary" target="_blank">Access Demo</a>
+    </div>
+    <div class="card">
+      <h3>Sign Up</h3>
+      <a href="https://my.nutanix.com/page/signup" class="btn btn-primary" target="_blank">Create Account</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">📚 Resources</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Customer Success Stories</h3>
+      <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">View Stories</a>
+    </div>
+    <div class="card">
+      <h3>Video Resources</h3>
+      <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Watch Videos</a>
+    </div>
+  </div>
+</section>
+
+<section class="highlight">
+  <h2 class="section-title">📞 Talk to Our NDB Specialist</h2>
+  <div class="card-container">
+    <div class="card">
+      <h3>Nidhi – NDB Sales Specialist</h3>
+      <a href="mailto:nidhi.bisht@nutanix.com" class="btn btn-primary">Email Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Optional Lead Capture Section -->
+<!-- Replace # with your Google Form link later -->
+<section>
+  <h2 class="section-title">🎁 Get Exclusive NDB Architecture Deck</h2>
+  <a href="#" class="btn btn-secondary">Register Here</a>
+</section>
+
+<footer>
+  © 2026 Nutanix | Nutanix Database Service (NDB)
+</footer>
+
+</body>
+</html>
