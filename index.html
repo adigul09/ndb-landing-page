@@ -3,278 +3,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutanix Database Service (NDB)</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>Nutanix Database Service (NDB) - Live Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --dark: #1A1F2E;
-  --blue: #024DA1;
-  --teal: #00A5A8;
-  --light: #F9FAFB;
-  --muted: #6B7280;
+  --dark: #0F172A;
+  --darker: #020617;
+  --accent: #06B6D4;
+  --accent-glow: rgba(6, 182, 212, 0.4);
+  --gold: #F59E0B;
   --white: #FFFFFF;
+  --gray: #94A3B8;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--dark);
-  line-height: 1.6;
+  background: var(--darker);
+  color: var(--white);
+  min-height: 100vh;
 }
 
-/* HERO */
-.hero {
-  background: linear-gradient(135deg, #1A1F2E 0%, #2D3748 100%);
-  color: white;
-  padding: 85px 20px 75px;
+/* MAIN CONTAINER */
+.page {
+  min-height: 100vh;
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER */
+.header {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .logo {
-  height: 45px;
-  margin-bottom: 20px;
+  height: 36px;
+  margin-bottom: 24px;
   filter: brightness(0) invert(1);
-}
-
-.product-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 15px;
   opacity: 0.9;
 }
 
-.hero h1 {
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin-bottom: 18px;
-  line-height: 1.2;
-}
-
-.hero p.sub {
-  font-size: 0.95rem;
-  opacity: 0.75;
-  margin-bottom: 25px;
-}
-
-/* BADGES */
-.badges {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin: 20px 0;
-}
-
-.badge {
-  padding: 8px 18px;
+.product-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.05));
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  padding: 10px 24px;
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.3px;
-  background: rgba(255,255,255,0.12);
-  border: 1.5px solid rgba(255,255,255,0.35);
-  color: white;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  color: var(--accent);
+}
+
+.headline {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subheadline {
+  font-size: 1rem;
+  color: var(--gray);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* LIVE SESSION CARD - THE HIGHLIGHT */
+.live-section {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 35px;
+}
+
+.live-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.live-pulse {
+  width: 12px;
+  height: 12px;
+  background: #EF4444;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.live-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--white);
+}
+
+/* SESSION CARDS */
+.session-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 16px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
-.badge:hover {
-  background: rgba(255,255,255,0.25);
-  transform: translateY(-2px);
+.session-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), var(--gold));
 }
 
-/* BUTTONS */
-.cta-group {
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:14px;
-  margin-top:30px;
+.session-card:hover {
+  border-color: rgba(6, 182, 212, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.session-icon {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+}
+
+.session-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.session-desc {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.session-meta {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.05);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.meta-icon {
+  font-size: 1.1rem;
+}
+
+.meta-item.highlight {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.1));
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: var(--accent);
+}
+
+/* CTA BUTTONS */
+.cta-section {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 .btn {
-  padding:14px 26px;
-  border-radius:8px;
-  font-weight:600;
-  text-decoration:none;
-  transition:0.3s;
-  display:inline-block;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg,#00A5A8,#00CEC9);
-  color:white;
+  background: linear-gradient(135deg, var(--accent), #0891B2);
+  color: white;
+  box-shadow: 0 4px 20px var(--accent-glow);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow:0 8px 25px rgba(0,165,168,0.4);
+  box-shadow: 0 8px 30px var(--accent-glow);
 }
 
-.btn-outline {
-  border:2px solid rgba(255,255,255,0.4);
-  color:white;
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
-.btn-outline:hover {
+.btn-secondary:hover {
   background: rgba(255,255,255,0.1);
 }
 
-/* SECTIONS */
-.section {
-  padding:70px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section-title {
-  text-align:center;
-  font-size:1.9rem;
-  font-weight:700;
-  margin-bottom:45px;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap:25px;
-}
-
-.card {
-  background: var(--light);
-  padding:28px;
-  border-radius:16px;
-  transition:0.3s;
-  text-align:center;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow:0 15px 40px rgba(0,0,0,0.05);
-}
-
-.card h3 {
-  font-size:1.1rem;
-  margin-bottom:12px;
-}
-
-.card p {
-  font-size:0.9rem;
-  color: var(--muted);
-}
-
-/* BOOTH SECTION */
-.booth {
-  background: linear-gradient(135deg,#F0FDFA,#EFF6FF);
-}
-
 /* CONTACT */
-.contact {
-  background: var(--dark);
-  color:white;
-  text-align:center;
-  padding:60px 20px;
+.contact-section {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
 }
 
-.section-label {
-  font-size:0.8rem;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  opacity:0.7;
-}
-
-.contact-card {
-  margin-top:25px;
+.contact-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray);
+  margin-bottom: 12px;
 }
 
 .contact-icon {
-  font-size:2rem;
-  margin-bottom:10px;
+  font-size: 2.5rem;
+  margin-bottom: 12px;
 }
 
-.btn-white {
-  background:white;
-  color:var(--dark);
-  margin-top:15px;
+.contact-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
-.btn-white:hover {
-  background:#f3f4f6;
+.contact-role {
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 18px;
 }
 
-footer {
-  text-align:center;
-  font-size:0.8rem;
-  padding:20px;
-  background:#111827;
-  color:rgba(255,255,255,0.5);
+.btn-email {
+  background: white;
+  color: var(--dark);
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
 }
 
-@media(max-width:640px){
-  .hero h1 { font-size:1.8rem; }
-  .cta-group { flex-direction:column; }
-  .btn { width:100%; text-align:center; }
+.btn-email:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255,255,255,0.15);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .page { padding: 30px 16px; }
+  .headline { font-size: 1.6rem; }
+  .session-meta { flex-direction: column; gap: 10px; }
+  .meta-item { justify-content: center; }
+  .cta-section { flex-direction: column; width: 100%; max-width: 300px; }
+  .btn { width: 100%; justify-content: center; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="Nutanix-Logo-Charcoal-Gray-Digital.png" alt="Nutanix" class="logo">
-
-  <div class="product-name">Nutanix Database Service (NDB)</div>
-
-  <h1>Database-as-a-Service Platform for SQL, NoSQL, and Vector Databases.</h1>
-
-  <div class="cta-group">
-    <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Explore NDB</a>
-    <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-outline" target="_blank">Live Test Drive</a>
-  </div>
-</section>
-
-<!-- LIVE BOOTH DEMONSTRATIONS (MOVED UP) -->
-<section class="section booth">
-  <h2 class="section-title">🔥 Live Booth Demonstrations – Happening During the Event</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>🔄 Instant Restore Demo</h3>
-      <div class="demo-time">📅 14 March 2026 | 🕒 2:30 PM</div>
-      <p>See point-in-time recovery of large databases in action.</p>
-    </div>
-    <div class="card">
-      <h3>🧬 Clone & Refresh Demo</h3>
-      <div class="demo-time">📅 14 March 2026 | 🕒 2:30 PM</div>
-      <p>Provision full database clones for Dev/Test in minutes.</p>
-    </div>
-  </div>
-</section>
+<div class="page">
   
-<!-- CONTACT -->
-<section class="contact">
-  <div class="section-header">
-    <span class="section-label">Connect</span>
-    <h2 class="section-title">📞 Talk to Our NDB Sales Team </h2>
+  <!-- HEADER -->
+  <header class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Nutanix_Logo.svg/2560px-Nutanix_Logo.svg.png" alt="Nutanix" class="logo">
+    
+    <div class="product-badge">Nutanix Database Service (NDB)</div>
+    
+    <h1 class="headline">Database-as-a-Service for<br>SQL, NoSQL & Vector DBs</h1>
+    
+    <p class="subheadline">One unified platform for provisioning, cloning, patching, backup & restore across on-prem and multicloud.</p>
+  </header>
+
+  <!-- LIVE SESSIONS - THE HIGHLIGHT -->
+  <section class="live-section">
+    <div class="live-header">
+      <div class="live-pulse"></div>
+      <span class="live-title">Live Booth Demonstrations</span>
+    </div>
+
+    <div class="session-card">
+      <div class="session-icon">⚡</div>
+      <h3 class="session-name">Instant Database Restore</h3>
+      <p class="session-desc">Experience point-in-time recovery of large databases powered by NDB Time Machine.</p>
+      <div class="session-meta">
+        <div class="meta-item highlight">
+          <span class="meta-icon">📅</span>
+          <span>14 March 2026</span>
+        </div>
+        <div class="meta-item highlight">
+          <span class="meta-icon">🕒</span>
+          <span>2:30 PM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="session-card">
+      <div class="session-icon">🧬</div>
+      <h3 class="session-name">Clone & Refresh Demo</h3>
+      <p class="session-desc">Provision full database clones for Dev/Test environments in minutes, not hours.</p>
+      <div class="session-meta">
+        <div class="meta-item highlight">
+          <span class="meta-icon">📅</span>
+          <span>14 March 2026</span>
+        </div>
+        <div class="meta-item highlight">
+          <span class="meta-icon">🕒</span>
+          <span>2:30 PM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BUTTONS -->
+  <div class="cta-section">
+    <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">
+      Explore NDB →
+    </a>
+    <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-secondary" target="_blank">
+      ▶ Live Test Drive
+    </a>
   </div>
-  
-  <div class="contact-card">
+
+  <!-- CONTACT -->
+  <div class="contact-section">
+    <div class="contact-label">Talk to Our Specialist</div>
     <div class="contact-icon">👩‍💼</div>
-    <h3>Nidhi Bisht – NDB Sales Specialist</h3>
-    <p>Get personalized assistance for your database needs</p>
-    <a href="mailto:nidhi.bisht@nutanix.com" class="btn btn-white">
+    <div class="contact-name">Nidhi Bisht</div>
+    <div class="contact-role">NDB Sales Specialist</div>
+    <a href="mailto:nidhi.bisht@nutanix.com" class="btn-email">
       ✉️ Email Now
     </a>
   </div>
-</section>
 
-<footer>
-© 2026 Nutanix | Nutanix Database Service (NDB)
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 <a href="https://www.nutanix.com" target="_blank">Nutanix</a> | Database Service (NDB)
+  </footer>
+
+</div>
 
 </body>
 </html>
