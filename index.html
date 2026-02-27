@@ -3,12 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nutanix Database Service (NDB) | Live Demo</title>
+<title>Nutanix Database Service (NDB)</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/feather-icons"></script>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
 
 body {
   background: #f7f6fb;
@@ -16,31 +22,35 @@ body {
   line-height: 1.6;
 }
 
-header {
+/* HERO SECTION */
+.hero {
   background: linear-gradient(135deg, #6b2edb, #8b5cf6);
   color: white;
   text-align: center;
-  padding: 70px 20px;
+  padding: 90px 20px 80px;
 }
 
-header img {
-  width: 170px;
-  margin-bottom: 25px;
+.logo {
+  width: 260px;
+  max-width: 85%;
+  margin-bottom: 40px;
 }
 
-h1 {
-  font-size: 2.5rem;
+.hero h1 {
+  font-size: 2.8rem;
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  line-height: 1.2;
 }
 
 .tagline {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: 1.25rem;
+  max-width: 850px;
+  margin: 0 auto 40px;
   opacity: 0.95;
 }
 
-.btn {
+.hero-buttons a {
   display: inline-block;
   padding: 14px 26px;
   border-radius: 30px;
@@ -71,6 +81,7 @@ h1 {
   transform: translateY(-4px);
 }
 
+/* SECTIONS */
 section {
   padding: 70px 20px;
   text-align: center;
@@ -82,6 +93,7 @@ section {
   margin-bottom: 40px;
 }
 
+/* CARDS */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -110,10 +122,12 @@ section {
   margin-bottom: 20px;
 }
 
+/* LIGHT HIGHLIGHT SECTION */
 .highlight {
   background: linear-gradient(135deg, #ede9ff, #f5f3ff);
 }
 
+/* CONTACT SECTION */
 .contact-section {
   background: linear-gradient(135deg, #6b2edb, #8b5cf6);
   color: white;
@@ -131,77 +145,113 @@ footer {
   color: #666;
 }
 
-@media(max-width:600px){
-  h1 { font-size:1.8rem; }
+/* MOBILE */
+@media(max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .logo {
+    width: 200px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <img src="Nutanix-Logo-Charcoal-Gray-Digital.png" alt="Nutanix Logo">
-  <h1>Live Restore & Clone Demo with Nutanix NDB</h1>
-  <p class="tagline">Automate Database Operations. Clone in Minutes. Restore Instantly.</p>
-  <a href="https://www.nutanix.com/products/database-service" class="btn btn-primary" target="_blank">Explore NDB</a>
-  <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-outline" target="_blank">Try Test Drive</a>
+<!-- HERO -->
+<header class="hero">
+  <img src="Nutanix-Logo-Charcoal-Gray-Digital.png" alt="Nutanix Logo" class="logo">
+
+  <h1>Enterprise Database Automation Made Simple</h1>
+
+  <p class="tagline">
+    Provision • Clone • Patch • Backup • Enforce SLA • Restore —
+    All from a Unified Database Lifecycle Platform.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="https://www.nutanix.com/products/database-service" class="btn-primary" target="_blank">
+      Explore NDB
+    </a>
+
+    <a href="https://www.nutanix.com/2-0-one-platform" class="btn-outline" target="_blank">
+      Try Live Test Drive
+    </a>
+  </div>
 </header>
 
+<!-- LIVE DEMO SECTION -->
 <section class="highlight">
-  <h2 class="section-title">🔥 Live Booth Breakout Sessions</h2>
+  <h2 class="section-title">🔥 Live Booth Demonstrations</h2>
+
   <div class="card-grid">
     <div class="card">
       <i data-feather="rotate-ccw"></i>
       <h3>Instant Database Restore</h3>
-      <p>Experience point-in-time restore using NDB Time Machine.</p>
+      <p>Experience point-in-time recovery powered by NDB Time Machine.</p>
     </div>
+
     <div class="card">
       <i data-feather="copy"></i>
-      <h3>Clone & Refresh</h3>
-      <p>Provision full database clones in minutes for Dev/Test.</p>
+      <h3>Clone & Refresh in Minutes</h3>
+      <p>Provision full database clones instantly for Dev and Test environments.</p>
     </div>
   </div>
 </section>
 
+<!-- EXPERIENCE SECTION -->
 <section>
   <h2 class="section-title">🚀 Experience NDB</h2>
+
   <div class="card-grid">
     <div class="card">
       <i data-feather="monitor"></i>
       <h3>Demo Portal</h3>
-      <a href="https://demo.nutanix.com/login" class="btn btn-primary" target="_blank">Access Demo</a>
+      <a href="https://demo.nutanix.com/login" class="btn-primary" target="_blank">Access Demo</a>
     </div>
+
     <div class="card">
       <i data-feather="user-plus"></i>
       <h3>Sign Up</h3>
-      <a href="https://my.nutanix.com/page/signup" class="btn btn-primary" target="_blank">Create Account</a>
+      <a href="https://my.nutanix.com/page/signup" class="btn-primary" target="_blank">Create Account</a>
     </div>
   </div>
 </section>
 
+<!-- RESOURCES -->
 <section class="highlight">
   <h2 class="section-title">📚 Resources</h2>
+
   <div class="card-grid">
     <div class="card">
       <i data-feather="award"></i>
       <h3>Customer Success Stories</h3>
-      <a href="https://www.nutanix.com/products/database-service#customers" class="btn btn-primary" target="_blank">View Stories</a>
+      <a href="https://www.nutanix.com/products/database-service#customers" class="btn-primary" target="_blank">View Stories</a>
     </div>
+
     <div class="card">
       <i data-feather="video"></i>
       <h3>Video Resources</h3>
-      <a href="https://www.nutanix.com/products/database-service#resources" class="btn btn-primary" target="_blank">Watch Videos</a>
+      <a href="https://www.nutanix.com/products/database-service#resources" class="btn-primary" target="_blank">Watch Videos</a>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact-section">
   <h2 class="section-title">📞 Talk to Our NDB Specialist</h2>
+
   <div class="card-grid">
     <div class="card">
       <i data-feather="mail"></i>
       <h3>Nidhi – NDB Sales Specialist</h3>
-      <a href="mailto:nidhi.bisht@nutanix.com" class="btn btn-primary">Email Now</a>
+      <a href="mailto:nidhi.bisht@nutanix.com" class="btn-primary">Email Now</a>
     </div>
   </div>
 </section>
