@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutanix Database Service (NDB)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --nutanix-dark: #1A1F2E;
+  --nutanix-blue: #024DA1;
+  --accent-teal: #00A5A8;
+  --accent-coral: #FF6B6B;
+  --text-dark: #1A1F2E;
+  --text-muted: #6B7280;
+  --bg-light: #F9FAFB;
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* HERO - Nutanix Style */
+.hero {
+  background: linear-gradient(135deg, #1A1F2E 0%, #2D3748 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 20px 55px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(0, 165, 168, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(2, 77, 161, 0.15) 0%, transparent 50%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 38px;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+  color: #4FD1C5;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 16px;
+}
+
+.tagline {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin-bottom: 32px;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-teal {
+  background: linear-gradient(135deg, #00A5A8 0%, #00CEC9 100%);
+  color: white;
+}
+
+.btn-teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 165, 168, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* SECTIONS */
+.section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-label {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0, 165, 168, 0.1), rgba(2, 77, 161, 0.1));
+  color: var(--accent-teal);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.card {
+  background: #F0FDFA;
+  border: none;
+  border-radius: 16px;
+  padding: 32px;
+  transition: all 0.3s ease;
+  text-align: center;
+  border-left: 4px solid var(--accent-teal);
+}
+
+.card:hover {
+  box-shadow: 0 12px 40px rgba(0, 165, 168, 0.12);
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: #CCF5F5;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+/* Card color variants */
+.card-teal {
+  background: #F0FDFA;
+  border-left-color: #00A5A8;
+}
+
+.card-blue {
+  background: #EFF6FF;
+  border-left-color: #3B82F6;
+}
+
+.card-blue .card-icon {
+  background: #DBEAFE;
+}
+
+.card-purple {
+  background: #F5F3FF;
+  border-left-color: #8B5CF6;
+}
+
+.card-purple .card-icon {
+  background: #EDE9FE;
+}
+
+.card-orange {
+  background: #FFF7ED;
+  border-left-color: #F97316;
+}
+
+.card-orange .card-icon {
+  background: #FFEDD5;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-teal);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: gap 0.3s ease;
+}
+
+.card-link:hover {
+  gap: 10px;
+}
+
+/* ALTERNATE SECTION */
+.section-alt {
+  background: var(--bg-light);
+}
+
+/* CONTACT */
+.contact {
+  background: linear-gradient(135deg, #1A1F2E 0%, #2D3748 100%);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  position: relative;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(0, 165, 168, 0.1) 0%, transparent 60%);
+}
+
+.contact .section-header {
+  position: relative;
+  z-index: 1;
+}
+
+.contact .section-label {
+  background: rgba(0, 165, 168, 0.2);
+  color: #4FD1C5;
+}
+
+.contact .section-title {
+  color: white;
+}
+
+.contact-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.contact-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.contact-card p {
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.btn-white {
+  background: white;
+  color: var(--nutanix-dark);
+}
+
+.btn-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* FOOTER */
+footer {
+  background: #111827;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: var(--accent-teal);
+  text-decoration: none;
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .section {
+    padding: 50px 20px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <img src="Nutanix-Logo-Charcoal-Gray-Digital.png" alt="Nutanix" class="logo" style="filter: brightness(0) invert(1);">
+    
+    <h1>Nutanix Database Service <span> - NDB</span></h1>
+    <h2 class="hero-subtitle">Database Automation Made Simple</h2>
+    
+    <p class="tagline">Provision • Clone • Patch • Backup • Restore — One Unified Platform across On-Prem and Multicloud</p>
+    
+    <div class="hero-btns">
+      <a href="https://www.nutanix.com/products/database-service" class="btn btn-teal" target="_blank">
+        Explore NDB →
+      </a>
+      <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-outline" target="_blank">
+        ▶ Live Test Drive
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- LIVE DEMOS -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">Live at Booth</span>
+    <h2 class="section-title">🔥 Live Demonstrations</h2>
+  </div>
+  
+  <div class="cards">
+    <div class="card card-teal">
+      <div class="card-icon">⏱️</div>
+      <h3>Instant Database Restore</h3>
+      <p>Experience point-in-time recovery powered by NDB Time Machine.</p>
+    </div>
+    
+    <div class="card card-blue">
+      <div class="card-icon">📋</div>
+      <h3>Clone & Refresh in Minutes</h3>
+      <p>Provision full database clones instantly for Dev and Test environments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE NDB -->
+<section class="section section-alt">
+  <div class="section-header">
+    <span class="section-label">Get Started</span>
+    <h2 class="section-title">✨ Experience NDB</h2>
+  </div>
+  
+  <div class="cards">
+    <div class="card card-purple">
+      <div class="card-icon">🖥️</div>
+      <h3>Demo Portal</h3>
+      <p>Access our interactive demo environment and explore NDB features.</p>
+      <a href="https://demo.nutanix.com/login" class="card-link" target="_blank">
+        Access Demo →
+      </a>
+    </div>
+    
+    <div class="card card-orange">
+      <div class="card-icon">👤</div>
+      <h3>Sign Up</h3>
+      <p>Create your Nutanix account to access resources and support.</p>
+      <a href="https://my.nutanix.com/page/signup" class="card-link" target="_blank">
+        Create Account →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="section">
+  <div class="section-header">
+    <span class="section-label">Learn More</span>
+    <h2 class="section-title">📚 Resources</h2>
+  </div>
+  
+  <div class="cards">
+    <div class="card card-teal">
+      <div class="card-icon">🏆</div>
+      <h3>Customer Success Stories</h3>
+      <p>See how enterprises are transforming database operations with NDB.</p>
+      <a href="https://www.nutanix.com/products/database-service#customers" class="card-link" target="_blank">
+        View Stories →
+      </a>
+    </div>
+    
+    <div class="card card-blue">
+      <div class="card-icon">🎬</div>
+      <h3>Video Resources</h3>
+      <p>Watch product demos, technical deep-dives, and customer testimonials.</p>
+      <a href="https://www.nutanix.com/products/database-service#resources" class="card-link" target="_blank">
+        Watch Videos →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="section-header">
+    <span class="section-label">Connect</span>
+    <h2 class="section-title">📞 Talk to Our NDB Specialist</h2>
+  </div>
+  
+  <div class="contact-card">
+    <div class="contact-icon">👩‍💼</div>
+    <h3>Nidhi – NDB Sales Specialist</h3>
+    <p>Get personalized assistance for your database needs</p>
+    <a href="mailto:nidhi.bisht@nutanix.com" class="btn btn-white">
+      ✉️ Email Now
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 <a href="https://www.nutanix.com" target="_blank">Nutanix</a> | Nutanix Database Service (NDB)
+</footer>
+
+</body>
+</html>
