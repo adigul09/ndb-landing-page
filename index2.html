@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nutanix Database Service (NDB)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --nutanix-dark: #1A1F2E;
+  --nutanix-blue: #024DA1;
+  --accent-teal: #00A5A8;
+  --accent-coral: #FF6B6B;
+  --text-dark: #1A1F2E;
+  --text-muted: #6B7280;
+  --bg-light: #F9FAFB;
+  --white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--white);
+  color: var(--text-dark);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+  background: linear-gradient(135deg, #1A1F2E 0%, #2D3748 100%);
+  color: white;
+  text-align: center;
+  padding: 70px 20px 60px;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 165, 168, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(2, 77, 161, 0.15) 0%, transparent 50%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 42px;
+  margin-bottom: 28px;
+  filter: brightness(0) invert(1);
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 14px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+  color: #4FD1C5;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  opacity: 0.9;
+  margin-bottom: 14px;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-btns {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 160px;
+}
+
+.btn-teal {
+  background: linear-gradient(135deg, #00A5A8 0%, #00CEC9 100%);
+  color: white;
+}
+
+.btn-teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 165, 168, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* ================= SECTIONS ================= */
+
+.section {
+  padding: 55px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.section-label {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(0,165,168,0.1), rgba(2,77,161,0.1));
+  color: var(--accent-teal);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+/* ================= CARDS ================= */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  border-radius: 18px;
+  padding: 26px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+}
+
+.card-icon {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* Card Variants */
+.card-teal { background: #F0FDFA; }
+.card-blue { background: #EFF6FF; }
+.card-purple { background: #F5F3FF; }
+.card-orange { background: #FFF7ED; }
+
+/* ================= CONTACT ================= */
+
+.contact {
+  background: linear-gradient(135deg, #1A1F2E 0%, #2D3748 100%);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-card {
+  background: rgba(255,255,255,0.06);
+  border-radius: 22px;
+  padding: 32px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contact-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.contact-card p {
+  opacity: 0.7;
+  font-size: 0.9rem;
+  margin-bottom: 22px;
+}
+
+.btn-white {
+  background: white;
+  color: var(--nutanix-dark);
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+  background: #111827;
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+
+@media (max-width: 640px) {
+
+  .hero {
+    padding: 60px 16px 50px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .tagline {
+    font-size: 0.85rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 45px 16px;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <img src="Nutanix-Logo-Charcoal-Gray-Digital.png" alt="Nutanix" class="logo">
+    
+    <h1>Nutanix Database Service <span>– NDB</span></h1>
+    <h2 class="hero-subtitle">Database Automation Made Simple</h2>
+    
+    <p class="tagline">
+      Provision • Clone • Patch • Backup • Restore — One Unified Platform across On-Prem and Multicloud
+    </p>
+    
+    <div class="hero-btns">
+      <a href="https://www.nutanix.com/products/database-service" class="btn btn-teal" target="_blank">
+        Explore NDB →
+      </a>
+      <a href="https://www.nutanix.com/2-0-one-platform" class="btn btn-outline" target="_blank">
+        ▶ Live Test Drive
+      </a>
+    </div>
+  </div>
+</header>
+
+</body>
+</html>
